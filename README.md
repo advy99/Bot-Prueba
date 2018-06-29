@@ -1,0 +1,1 @@
+Bot de prueba, ire añadiendo funciones basicas, para practicar
