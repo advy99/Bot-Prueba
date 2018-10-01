@@ -9,6 +9,9 @@ def sed(bot, update):
     update.message.reply_text(
         'Si no bebo agua meahfisio, {}'.format(update.message.from_user.first_name))
 
+def catastrofe(bot, update):
+    update.message.reply_text(
+        '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
 def palindromo(bot, update):
 	texto = update.message.reply_to_message.text
@@ -29,6 +32,8 @@ updater.dispatcher.add_handler(CommandHandler('start', saludar))
 updater.dispatcher.add_handler(CommandHandler('palindromo',palindromo))
 
 updater.dispatcher.add_handler(CommandHandler('sed', sed))
+
+updater.dispatcher.add_handler(CommandHandler('catastrofe',catastrofe))
 
 updater.start_polling()
 updater.idle()
