@@ -9,6 +9,11 @@ def sed(bot, update):
     update.message.reply_text(
         'Si no bebo agua meahfisio, {}'.format(update.message.from_user.first_name))
 
+def chiste(bot, update):
+    update.message.reply_text(
+        'Esto son dos hienas que se están comiendo una zebra, y le dice una a \
+        la otra: "¿Oye tú tienes más hambre?", y le responde: "No, yo ya estoy \
+        "hiena"", {}'.format(update.message.from_user.first_name))
 
 def palindromo(bot, update):
 	texto = update.message.reply_to_message.text
