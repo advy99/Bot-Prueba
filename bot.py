@@ -5,6 +5,10 @@ def saludar(bot, update):
     update.message.reply_text(
         'Hola {}'.format(update.message.from_user.first_name))
 
+def sed(bot, update):
+    update.message.reply_text(
+        'Si no bebo agua meahfisio, {}'.format(update.message.from_user.first_name))
+
 
 def palindromo(bot, update):
 	texto = update.message.reply_to_message.text
@@ -23,6 +27,8 @@ updater = Updater(TOKEN)
 updater.dispatcher.add_handler(CommandHandler('start', saludar))
 
 updater.dispatcher.add_handler(CommandHandler('palindromo',palindromo))
+
+updater.dispatcher.add_handler(CommandHandler('sed', sed))
 
 updater.start_polling()
 updater.idle()
