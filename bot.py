@@ -22,6 +22,10 @@ def palindromo(bot, update):
 	else:
 		update.message.reply_text(
 			'El texto: " {} " no es un palindromo'.format(texto))
+		
+def owo(bot, update):
+    update.message.reply_text(
+        'OwO whats this? {}'.format(update.message.from_user.first_name))
 
 
 
@@ -34,6 +38,8 @@ updater.dispatcher.add_handler(CommandHandler('palindromo',palindromo))
 updater.dispatcher.add_handler(CommandHandler('sed', sed))
 
 updater.dispatcher.add_handler(CommandHandler('catastrofe',catastrofe))
+
+updater.dispatcher.add_handler(CommandHandler('owo',owo))
 
 updater.start_polling()
 updater.idle()
