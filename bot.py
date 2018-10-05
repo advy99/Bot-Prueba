@@ -21,7 +21,7 @@ def catastrofe(bot, update):
         '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
 def palindromo(bot, update):
-	texto = update.message.reply_to_message.text
+	texto = update.message.text
 
 	if(texto == texto[::-1]):
 		update.message.reply_text(
