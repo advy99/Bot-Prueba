@@ -21,9 +21,15 @@ def catastrofe(bot, update):
         '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
 def palindromo(bot, update):
-	texto = update.message.reply_to_message.text
+	# message.text format "/command text"
+	tmp = update.message.text.split(" ")
 
-	if(texto == texto[::-1]):
+	# first element is command
+	tmp.pop(0)
+	# tebuild text back to its form
+	texto = ' '.join(tmp)
+
+	if texto == texto[::-1]:
 		update.message.reply_text(
 			'El texto: " {} " es un palindromo'.format(texto))
 	else:
