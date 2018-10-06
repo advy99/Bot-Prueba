@@ -1,5 +1,6 @@
 from telegram.ext import Updater, CommandHandler
 from config import TOKEN
+import utils
 
 def saludar(bot, update):
     update.message.reply_text(
@@ -11,15 +12,18 @@ def sed(bot, update):
 
 
 def palindromo(bot, update):
-	texto = update.message.reply_to_message.text
+	# message.text format "/command text"
+	tmp = update.message.text.split(" ")
 
-	if(texto == texto[::-1]):
-		update.message.reply_text(
-			'El texto: " {} " es un palindromo'.format(texto))
+	# first element is command
+	tmp.pop(0)
+	# tebuild text back to its form
+	msg = ' '.join(tmp)
+
+	if msg is not "":
+		utils.is_palindrome(bot, update, msg)
 	else:
-		update.message.reply_text(
-			'El texto: " {} " no es un palindromo'.format(texto))
-
+		update.message.reply_text("Prueba de nuevo.")
 
 
 updater = Updater(TOKEN)
