@@ -1,2 +1,5 @@
-#introduce el token de tu bot, lo puedes crear en t.me/BotFather
-TOKEN = ""
+import os
+
+
+# Enter your bot's token, you can create it in t.me/BotFather
+TOKEN = os.getenv("TELEGRAM_TOKEN")

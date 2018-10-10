@@ -1,5 +1,6 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from config import TOKEN
+import utils
 import logging
 
 # Habilitar logging
@@ -21,15 +22,18 @@ def catastrofe(bot, update):
         '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
 def palindromo(bot, update):
-	texto = update.message.reply_to_message.text
+	# message.text format "/command text"
+	tmp = update.message.text.split(" ")
 
-	if(texto == texto[::-1]):
-		update.message.reply_text(
-			'El texto: " {} " es un palindromo'.format(texto))
+	# first element is command
+	tmp.pop(0)
+	# tebuild text back to its form
+	msg = ' '.join(tmp)
+
+	if msg is not "":
+		utils.is_palindrome(bot, update, msg)
 	else:
-		update.message.reply_text(
-			'El texto: " {} " no es un palindromo'.format(texto))
-
+		update.message.reply_text("Prueba de nuevo.")
 def owo(bot, update):
     update.message.reply_text(
         'OwO whats this? {}'.format(update.message.from_user.first_name))
