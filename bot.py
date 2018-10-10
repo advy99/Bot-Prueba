@@ -23,7 +23,7 @@ def catastrofe(bot, update):
 def palindromo(bot, update):
 	# call the bot like this:
 	# /palindromo radar
-	texto = update.message.text.replace('/palindromo ', '')
+	texto = update.message.text.replace('/palindromo ', '').strip()
 
 	if(texto == texto[::-1]):
 		update.message.reply_text(
