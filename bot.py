@@ -21,6 +21,12 @@ def catastrofe(bot, update):
     update.message.reply_text(
         '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
+def amigo (bot, update):
+	msg= update.message.text.lower()
+	if 'amigo' in msg:
+    	update.message.reply_text(
+        '{} This is my amazing new friend! https://www.articulosreligiososbrabander.es/uploads/media/images/396x396/imagen-artesanal-del-nino-jesus-con-panales-para-cuna-11.jpg '.format(update.message.from_user.first_name))
+
 def palindromo(bot, update):
 	# message.text format "/command text"
 	tmp = update.message.text.split(" ")
@@ -57,6 +63,7 @@ def main():
 	dp.add_handler(CommandHandler('sed', sed))
 	dp.add_handler(CommandHandler('catastrofe', catastrofe))
 	dp.add_handler(CommandHandler('owo', owo))
+	dp.add_handler(MessageHandler(Filters.text, amigo))
 
 
 	# Handler de errores:
