@@ -1,7 +1,11 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from config import TOKEN
-import utils
+# -*- coding: utf-8 -*-
+
 import logging
+from config import TOKEN
+from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
+						  ConversationHandler, RegexHandler)
+from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
+import utils
 
 # Habilitar logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -22,10 +26,10 @@ def catastrofe(bot, update):
         '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
 def amigo (bot, update):
+	chat_id = update.message.chat_id
 	msg= update.message.text.lower()
-	if 'amigo' in msg:
-    	update.message.reply_text(
-        '{} This is my amazing new friend! https://www.articulosreligiososbrabander.es/uploads/media/images/396x396/imagen-artesanal-del-nino-jesus-con-panales-para-cuna-11.jpg '.format(update.message.from_user.first_name))
+	if 'amigo' in msg or 'friend' in msg :
+		bot.send_photo(chat_id, "https://www.articulosreligiososbrabander.es/uploads/media/images/396x396/imagen-artesanal-del-nino-jesus-con-panales-para-cuna-11.jpg", "This is my amazing new friend!.")
 
 def palindromo(bot, update):
 	# message.text format "/command text"
@@ -63,6 +67,7 @@ def main():
 	dp.add_handler(CommandHandler('sed', sed))
 	dp.add_handler(CommandHandler('catastrofe', catastrofe))
 	dp.add_handler(CommandHandler('owo', owo))
+
 	dp.add_handler(MessageHandler(Filters.text, amigo))
 
 
