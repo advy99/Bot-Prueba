@@ -19,7 +19,7 @@ def saludar(bot, update):
 
 def sed(bot, update):
     update.message.reply_text(
-        'Si no bebo agua meahfisio, {}'.format(update.message.from_user.first_name))
+        'Si no bebo agua meahfisio surmano, {}'.format(update.message.from_user.first_name))
 
 def catastrofe(bot, update):
     update.message.reply_text(
