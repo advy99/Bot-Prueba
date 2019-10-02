@@ -48,6 +48,15 @@ def owo(bot, update):
     update.message.reply_text(
         'OwO whats this? {}'.format(update.message.from_user.first_name))
 
+# Never gives you up:
+def navidad(bot, update):
+	user = update.message.from_user
+	chat_id = update.message.chat_id
+	logger.info("Feliz Navidad, {} !.".format(user.first_name))
+
+	# Send the video:
+	update.message.reply_text("https://www.youtube.com/watch?v=dx_ZhonlxHU")
+
 # Error handler
 def error(bot, update, error):
 	"""Log Errors caused by Updates."""
@@ -67,6 +76,7 @@ def main():
 	dp.add_handler(CommandHandler('sed', sed))
 	dp.add_handler(CommandHandler('catastrofe', catastrofe))
 	dp.add_handler(CommandHandler('owo', owo))
+	dp.add_handler(CommandHandler('navidad', navidad))
 
 	dp.add_handler(MessageHandler(Filters.text, amigo))
 
