@@ -25,6 +25,10 @@ def catastrofe(bot, update):
     update.message.reply_text(
         '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
+def chiste(bot, update):
+    update.message.reply_text(
+        '¿Quieres un chiste, {}? Este repo si que es un chiste -> https://github.com/Groctel/Jokes'.format(update.message.from_user.first_name))
+
 def amigo (bot, update):
 	chat_id = update.message.chat_id
 	msg= update.message.text.lower()
@@ -67,6 +71,7 @@ def main():
 	dp.add_handler(CommandHandler('sed', sed))
 	dp.add_handler(CommandHandler('catastrofe', catastrofe))
 	dp.add_handler(CommandHandler('owo', owo))
+	dp.add_handler(CommandHandler('chiste', chiste))
 
 	dp.add_handler(MessageHandler(Filters.text, amigo))
 
