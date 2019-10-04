@@ -29,6 +29,10 @@ def chiste(bot, update):
     update.message.reply_text(
         '¿Quieres un chiste, {}? Este repo si que es un chiste -> https://github.com/Groctel/Jokes'.format(update.message.from_user.first_name))
 
+def pressF(bot, update):
+    update.message.reply_text(
+    'Press F to pay respect to {}'.format(update.message.from_user.first_name))
+
 def amigo (bot, update):
 	chat_id = update.message.chat_id
 	msg= update.message.text.lower()
@@ -91,12 +95,15 @@ def main():
 	dp.add_handler(CommandHandler('owo', owo))
 
 	dp.add_handler(CommandHandler('rubio', rubio))
-
+	
+	dp.add_handler(CommandHandler('pressF', pressF))
 	dp.add_handler(CommandHandler('chiste', chiste))
 	dp.add_handler(CommandHandler('navidad', navidad))
 
 
 	dp.add_handler(MessageHandler(Filters.text, amigo))
+	
+	
 
 
 	# Handler de errores:
