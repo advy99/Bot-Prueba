@@ -44,9 +44,9 @@ def owo(bot, update):
     update.message.reply_text(
         'OwO whats this? {}'.format(update.message.from_user.first_name))
 
-def amigo (bot, update):
+def rubio (bot, update):
 	msg= update.message.text.lower()
-	if 'Rubio' in msg:
+	if 'rubio' in msg:
     	update.message.reply_text(
         '{}  uwu https://i.pinimg.com/originals/12/2d/9d/122d9da270e8f68038d17dd33412ba7e.jpg '.format(update.message.from_user.first_name))
 
@@ -70,6 +70,7 @@ def main():
 	dp.add_handler(CommandHandler('sed', sed))
 	dp.add_handler(CommandHandler('catastrofe', catastrofe))
 	dp.add_handler(CommandHandler('owo', owo))
+	dp.add_handler(CommandHandler('rubio', rubio))
 	dp.add_handler(MessageHandler(Filters.text, amigo))
 
 
