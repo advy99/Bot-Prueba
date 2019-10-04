@@ -1,7 +1,11 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from config import TOKEN
-import utils
+# -*- coding: utf-8 -*-
+
 import logging
+from config import TOKEN
+from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
+						  ConversationHandler, RegexHandler)
+from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
+import utils
 
 # Habilitar logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -21,11 +25,15 @@ def catastrofe(bot, update):
     update.message.reply_text(
         '¡¡¡¡¡{}, esto es una catastrófe!!!!!!'.format(update.message.from_user.first_name))
 
+def chiste(bot, update):
+    update.message.reply_text(
+        '¿Quieres un chiste, {}? Este repo si que es un chiste -> https://github.com/Groctel/Jokes'.format(update.message.from_user.first_name))
+
 def amigo (bot, update):
+	chat_id = update.message.chat_id
 	msg= update.message.text.lower()
-	if 'amigo' in msg:
-    	update.message.reply_text(
-        '{} This is my amazing new friend! https://www.articulosreligiososbrabander.es/uploads/media/images/396x396/imagen-artesanal-del-nino-jesus-con-panales-para-cuna-11.jpg '.format(update.message.from_user.first_name))
+	if 'amigo' in msg or 'friend' in msg :
+		bot.send_photo(chat_id, "https://www.articulosreligiososbrabander.es/uploads/media/images/396x396/imagen-artesanal-del-nino-jesus-con-panales-para-cuna-11.jpg", "This is my amazing new friend!.")
 
 def palindromo(bot, update):
 	# message.text format "/command text"
@@ -44,11 +52,22 @@ def owo(bot, update):
     update.message.reply_text(
         'OwO whats this? {}'.format(update.message.from_user.first_name))
 
+    
 def rubio (bot, update):
 	msg= update.message.text.lower()
 	if 'rubio' in msg:
     	update.message.reply_text(
         '{}  uwu https://i.pinimg.com/originals/12/2d/9d/122d9da270e8f68038d17dd33412ba7e.jpg '.format(update.message.from_user.first_name))
+
+
+# Never gives you up:
+def navidad(bot, update):
+	user = update.message.from_user
+	chat_id = update.message.chat_id
+	logger.info("Feliz Navidad, {} !.".format(user.first_name))
+
+	# Send the video:
+	update.message.reply_text("https://www.youtube.com/watch?v=dx_ZhonlxHU")
 
 
 # Error handler
@@ -70,7 +89,13 @@ def main():
 	dp.add_handler(CommandHandler('sed', sed))
 	dp.add_handler(CommandHandler('catastrofe', catastrofe))
 	dp.add_handler(CommandHandler('owo', owo))
+
 	dp.add_handler(CommandHandler('rubio', rubio))
+
+	dp.add_handler(CommandHandler('chiste', chiste))
+	dp.add_handler(CommandHandler('navidad', navidad))
+
+
 	dp.add_handler(MessageHandler(Filters.text, amigo))
 
 
