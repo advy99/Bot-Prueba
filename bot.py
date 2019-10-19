@@ -33,6 +33,10 @@ def pressF(bot, update):
     update.message.reply_text(
     'Press F to pay respect to {}'.format(update.message.from_user.first_name))
 
+def ultimaPR(bot, update):
+    update.message.reply_text(
+    'Gracias {} por utilizar este comando, me ha ayudado a conseguir una camiseta'.format(update.message.from_user.first_name))
+
 def amigo (bot, update):
 	chat_id = update.message.chat_id
 	msg= update.message.text.lower()
@@ -93,6 +97,7 @@ def main():
 	dp.add_handler(CommandHandler('sed', sed))
 	dp.add_handler(CommandHandler('catastrofe', catastrofe))
 	dp.add_handler(CommandHandler('owo', owo))
+	dp.add_handler(CommandHandler('gracias', ultimaPR))
 
 	dp.add_handler(CommandHandler('rubio', rubio))
 	
