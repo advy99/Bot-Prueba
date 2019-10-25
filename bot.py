@@ -101,6 +101,8 @@ def main():
 
 	dp.add_handler(CommandHandler('rubio', rubio))
 
+	dp.add_handler(CommandHandler('truco', truco))
+
 	dp.add_handler(CommandHandler('pressF', pressF))
 	dp.add_handler(CommandHandler('chiste', chiste))
 	dp.add_handler(CommandHandler('navidad', navidad))
